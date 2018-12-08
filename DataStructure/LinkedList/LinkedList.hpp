@@ -17,12 +17,12 @@ public :
 	LinkedList():head(nullptr),numOfNodes(0){}
 	~LinkedList();
 	void insert(T val);
-	//void insertAt(int index);
+	void insertAt(T val,int index);
 	void insertAtBeg(T val);
 	//void remove(T val);
 	//void removeAt(int index);
-	//void removeAtBeg();
-	//void removeAtEnd();
+	void removeAtBeg();
+	void removeAtEnd();
 	void print();
 	//void printReverse();
 	int size(){return numOfNodes;}

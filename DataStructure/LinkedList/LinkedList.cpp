@@ -37,6 +37,27 @@ void LinkedList<T>::insert(T val){
 }
 
 template<class T>
+void LinkedList<T>::insertAt(T val, int index){
+	if(index > numOfNodes){
+		cout << "Index is more than the number of nodes in the list" << endl;
+		return;
+	}
+	Node<T> *newNode = getNewNode(val);
+	if (index == 1){
+		newNode -> next = head;
+		head = newNode;
+		numOfNodes++;
+		return;
+	}
+	Node<T> *current = head;
+	for(int i = 0; i < index - 2;i++)
+		current = current -> next;
+	newNode -> next = current -> next;
+	current -> next = newNode;
+	numOfNodes++;
+}
+
+template<class T>
 void LinkedList<T>::insertAtBeg(T val){
 	Node<T> *temp = getNewNode(val);
 	if (!head){
@@ -48,6 +69,38 @@ void LinkedList<T>::insertAtBeg(T val){
 	head = temp;
 	numOfNodes++;
 }
+
+template<class T>
+void LinkedList<T>::removeAtBeg(){
+	if(!head){
+		cout << "List is empty." << endl;
+		return;
+	}
+	Node<T> *temp = head;
+	head = head -> next;
+	numOfNodes--;
+	delete temp;
+	return;
+}
+
+template<class T>
+void LinkedList<T>::removeAtEnd(){
+	if(!head){
+                cout << "List is empty." << endl;
+                return;
+        }
+	Node<T> *current = head;
+	Node<T> *prev = nullptr;
+	while(current->next){
+		prev = current;
+		current = current -> next;
+	}
+	prev -> next = current -> next;
+	delete current;
+	numOfNodes--;
+	return;
+}
+
 
 template<class T>
 void LinkedList<T>::print(){
