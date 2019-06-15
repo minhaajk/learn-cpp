@@ -12,4 +12,6 @@ $(APP) : $(SRCPATH)/*
 	$(CC) -o $(APP) $(SRCPATH)/* $(CFLAGS)
 
 clean:
+	@echo "****** Cleaning ComplexNumberLib/makefile"
+	(cd ../ComplexNumberLib && $(MAKE) clean)
 	rm -rf *.o $(APP)
